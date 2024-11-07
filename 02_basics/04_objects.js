@@ -74,4 +74,23 @@ const db = [
 
 
 //check if a particular key exist in an object
-console.log(tinderUser.hasOwnProperty('email'));
+// console.log(tinderUser.hasOwnProperty('email'));
+
+
+
+
+
+//++++++++++++++++++++++++++ OBJECT DESTRUCTURE +++++++++++++++++++++++
+//object destructuring in very simple way means extracting the value of object so we don't have do 'object.key' again & again
+
+const course = {
+    courseName : 'Javascript',
+    coursePrice : "free",
+    courseInstructor : 'Youtube'
+}
+
+const {courseName} = course    //destructuring
+console.log(courseName);
+const {courseInstructor : teacher} = course    //renameing for easy access
+console.log(teacher);
+
