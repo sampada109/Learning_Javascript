@@ -1,0 +1,89 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    background-color: #212121;
+    color: whitesmoke;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main{
+    height: 100%;
+    /* background-color:burlywood; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.headings{
+    text-align: center;
+    font-size: 18px;
+}
+.headings h2{
+    color:limegreen;
+    font-weight: bold;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.input p{
+    font-size: 20px;
+    color: limegreen;
+}
+.input input{
+    border: transparent;
+    width: 50%;
+    padding: 3px;
+    border-radius: 5px;
+    height: 20px;
+    font-size: 15px;
+}
+
+.guess{
+    margin-top: 5px;
+    text-align: center;
+}
+.guess h2{
+    color:limegreen;
+    font-weight: bold;
+    font-size: 30px;
+}
+.guess input{
+    border: transparent;
+    border-radius: 5px;
+    height: 25px;
+    padding: 3px;
+    font-size: 15px;
+}
+.guess button{
+    font-size: 18px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    background-color: limegreen;
+    color: whitesmoke;
+}
+
+.attemps{
+    margin-top: 40px;
+}
+
+.message{
+    display: none;  /*Hidden by default*/
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000; /* Ensure it appears above other content */
+}

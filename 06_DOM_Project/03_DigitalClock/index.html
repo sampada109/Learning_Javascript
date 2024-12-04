@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <style>
+        body{
+            background-color:rgb(5, 5, 28);
+            color: rgb(250, 174, 60);
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .outer-div{
+            margin-top: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2{
+            font-size: 40px;
+        }
+
+        .outer-clock{
+            height: 250px;
+            width: 650px;
+            background-color: rgb(98, 97, 97);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .inner-clock{
+            height: 200px;
+            width: 600px;
+            background-color: rgb(29, 28, 28);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            font-size: 80px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <div class="outer-div">
+
+        <h2>Digital Clock 🕧</h2>
+        <div class="outer-clock">
+
+            <div class="inner-clock">
+                
+                <h1></h1>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+
+<script>
+    const time = document.querySelector('h1')
+
+    setInterval(function(){
+        let date = new Date();
+        time.innerHTML = date.toLocaleTimeString();
+    })
+</script>
+
+</html>
