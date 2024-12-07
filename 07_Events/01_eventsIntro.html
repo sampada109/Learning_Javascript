@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Events</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    
+    <h2>Some Beautiful Images</h2>
+
+    <div>
+        <ul id="images">
+            List of Images
+            <li><img id="tiger" src="https://images.pexels.com/photos/814898/pexels-photo-814898.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width="400px"></li>
+            <li><img id="parrot" src="https://images.pexels.com/photos/1316294/pexels-photo-1316294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width="400px"></li>
+            <li><img id="puppy" src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width="400px"></li>
+            <li><img id="zebra" src="https://images.pexels.com/photos/247376/pexels-photo-247376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width="400px"></li>
+            <li><a id="google" href="https://www.google.com">google</a></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    /*Some key properties of events
+    -> type, timestamp, defaultPrevented
+    -> target, toElement, srcElement, currentTarget
+    -> clientX, clientY, screenX, screenY
+    -> altkey, ctrlkey, shiftkey, keycode
+    */
+
+    // addListenerEvent has 3 parameters : 1st-event , 2nd-function, 3rd-false/true,it specifies how event is handeled(bubble/capture) where false is default that's why it is not written explicitly in most of the cases but some cases requirment true/false
+    // document.querySelector('#puppy').addEventListener('click', function(e){
+    //     // alert('Puppy clicked!')
+    //     console.log(e);
+    // }, false)
+    
+    /* Event Propogation 
+    - Event propagation refers to how events travel through the DOM tree. It happens in three phases:
+    1. Event Capturing Phase(True)(Top to Down) : The event starts from the root (window) and moves down through parent elements until it reaches the target element
+    2. Event Bubbling Phase(False)(Default)(Down to top) : from the target back through its parent elements to the root
+    3. Event Target Phase : The event reaches the actual element that triggered it { target.addEventListener('click', () => {console.log('Target');}); }
+    */
+
+    //Event Bubbling (1st-target, then root)
+    // document.querySelector('#images').addEventListener('click', function(){
+    //     console.log('Any Image is clicked')
+    // }, false)
+    // document.querySelector('#parrot').addEventListener('click', function(){
+    //     console.log('parrot is clicked')
+    // }, false)
+
+    //Event Capturing (1st-root, then target)
+    // document.querySelector('#images').addEventListener('click', function(){
+    //     console.log('Any Image is clicked')
+    // }, true)
+    // document.querySelector('#parrot').addEventListener('click', function(){
+    //     console.log('parrot is clicked')
+    // }, true)
+
+    //Prevent Propogation (basically used to seperate target & root, when it applied then it is stop after executing the 1st function(target or root))
+    // document.querySelector('#images').addEventListener('click', function(){
+    //     console.log('Any Image is clicked')
+    // }, false)
+    // document.querySelector('#parrot').addEventListener('click', function(e){
+    //     console.log('parrot is clicked')
+    //     e.stopPropagation();
+    // }, false)
+
+    //Prevent Default Behaviour
+    // document.querySelector('#google').addEventListener('click', function(e){
+    //     console.log('google clicked')
+    //     e.preventDefault();
+    // })
+
+
+    /*EXERCISE -> Remove the li element which is clicked
+    Approch 1 - take each elemt and put add listerner on each and what ever is clicked remove that, but it is not optimal because there can be 100of elements
+    Approch 2 - take the parent elemt and add listener to it so that whatever child is clicked remove it
+    */
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        // console.log(e.target.parentNode)
+        // const target = e.target.parentNode  //target - img, parent- li
+        // target.remove();  //now if the list is clicked then whole list is getting removed at once
+
+        console.log(e.target.tagName)
+        let targetElm = e.target.tagName;
+        if(targetElm === 'IMG'){
+            let removeit = e.target.parentNode
+            removeit.remove();
+        }
+
+    })
+
+</script>
+
+</html>
