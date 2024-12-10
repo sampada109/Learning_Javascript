@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyn Project 2</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    
+    <div style="display:flex; flex-direction: column; align-items: center;">
+        <h2>Project 2</h2>
+        <h4>Start will change Background color & stop will bring back black background</h4>
+        <p>Open Console for more Info</p>
+        <div style="display: flex; gap: 15px; margin-top:25px;">
+            <button id="start" style="background-color: greenyellow; font-size: 18px; padding: 10px; border-radius: 8px;"> Start </button>
+            <button id="stop" style="background-color: tomato; font-size: 18px; padding: 10px; border-radius: 8px;">Stop</button>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const body = document.querySelector('body')
+    const start = document.querySelector('#start')
+    const stop = document.querySelector('#stop')
+    let timeInterval;
+
+    //random color generator
+    const randomColor = function(){
+        const hex = "0123456789ABCDEF";
+        let color = '#';
+        for(let i=0; i<6; i++){
+            color += hex[Math.floor(Math.random()*16)];
+        }
+        return color;
+    }
+    
+    //start
+    start.addEventListener('click', ()=>{
+        if(!timeInterval){
+            timeInterval = setInterval(()=>{
+                body.style.backgroundColor = randomColor();
+                console.log(randomColor());
+            }, 1000)
+        }
+    })
+
+    //stop
+    stop.addEventListener('click', ()=>{
+        clearInterval(timeInterval);
+        timeInterval = null;
+        body.style.backgroundColor = '#212121';
+    })
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: whitesmoke;">
+
+    <div style="display: flex; flex-direction: column; align-items:center; justify-content: center;">
+        
+        <h2>Trying Time functions</h2>
+    
+        <button>STOP</button>
+
+    </div>
+    
+</body>
+
+<script>
+    /* setTimeOut -> run only once after the time interval 
+       clearTimeOut
+       
+    const body = document.querySelector('body');
+
+    //setTimeOut
+    const timeOut = setTimeout(() => {
+        body.style.background = 'orange';
+        console.log('Colored')
+    }, 2000);
+
+    const btn = document.querySelector('button')
+
+    //clearTimeOut -> stop the setTimeOut function
+    btn.addEventListener('click', function(){
+    clearTimeout(timeOut);
+        console.log('Stoped');
+    })
+
+    */
+
+    /* setTimeInterval -> run continously everytime affter each interval
+    */
+
+    //timeInterval
+    const timeInterval = setInterval(() => {
+        console.log("hello", Date.now())
+    }, 2000);
+    
+    const btn = document.querySelector('button');
+
+    //clearTimeInterval
+    btn.addEventListener('click', ()=>{
+        clearInterval(timeInterval);
+        console.log('Stoped');
+    })
+
+</script>
+
+</html>

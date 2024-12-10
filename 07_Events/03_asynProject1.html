@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyn Project 1</title>
+</head>
+<body style="background-color: #212121; color: whitesmoke;">
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h2>Asynchronous Project 1</h2>
+        <p>Open Your Console</p>
+        <div style="display: flex; gap: 15px;">
+            <button id="start" style="background-color: greenyellow; font-size: 18px; padding: 10px; border-radius: 8px;"> Start </button>
+            <button id="stop" style="background-color: tomato; font-size: 18px; padding: 10px; border-radius: 8px;">Stop</button>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    const body = document.querySelector('body');
+    const start = document.querySelector('#start');
+    const stop = document.querySelector('#stop');
+    let timeInterval;
+
+    //start
+    start.addEventListener('click', ()=>{
+        if(!timeInterval){
+            timeInterval = setInterval(() => {
+                body.style.backgroundColor = 'orange';
+                console.log("Hi", Date().toString());
+            }, 1000);
+        }
+    })
+
+    //stop
+    stop.addEventListener('click', ()=>{
+        body.style.backgroundColor = '#212121';
+        clearInterval(timeInterval);
+        timeInterval = null;
+    })
+
+</script>
+
+</html>
