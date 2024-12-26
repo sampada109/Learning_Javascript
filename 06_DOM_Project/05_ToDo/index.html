@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center;">
+    
+    <div style="margin-top: 100px;">
+        <h1>My To Do List📃</h1>
+        
+        <form id="form" style="margin-top: 30px;">
+            <input id="input" placeholder="New Task" type="text" style="padding: 10px;">
+            <button type="submit" style="padding: 10px;">Add Task</button>
+        </form>
+
+        <ul id="tasks"></ul>
+
+    </div>
+
+</body>
+
+<script>
+
+    document.querySelector('#form').onsubmit = (f)=>{
+        // f.preventDefault();     // to prevent form from submitting
+
+        let input = document.querySelector('#input').value;     //getvalue of input field
+        if(input === ''){
+            alert('please enter valid tasks');
+            return;
+        }
+        console.log(input)
+        const li = document.createElement('li');             //creating a new li element
+        li.innerHTML = input;                               //inner value if li elem
+        document.querySelector('#tasks').append(li);        //adding li elem to list
+        document.querySelector('#input').value = ''         //clearing the input field
+
+        return false;    // another way of preventing default form submission
+    }
+
+</script>
+
+</html>

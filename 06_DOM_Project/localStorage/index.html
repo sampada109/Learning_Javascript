@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+</head>
+<body>
+    
+    <h1>Items in Your Bag 🎒</h1>
+
+    <form id="form">
+        <input id="input" type="text" placeholder="Item📱🥤👕🪪...." style="padding: 8px 15px;">
+        <button id="submit" type="submit" style="padding: 8px 15px; background-color:rgb(255, 179, 179);">Put in Bag</button>
+    </form>
+
+    <ul id="list">
+
+    </ul>
+
+</body>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve and parse the 'mylist' from localStorage
+    let mylist = JSON.parse(localStorage.getItem('mylist')) || []; // Default to an empty array if null
+
+    // Check if mylist has elements and append them to the DOM
+    if (mylist.length > 0) {
+        mylist.forEach(element => {
+            const li = document.createElement('li');
+            li.textContent = element; // Set the text content of the li
+            document.querySelector('#list').append(li);
+        });
+    }
+
+    let button = document.querySelector('#submit');
+    button.disabled = true;
+
+    let input = document.querySelector('#input');
+
+    // Enable or disable the button based on input value
+    input.addEventListener('input', () => {
+        button.disabled = input.value.length === 0; // Disable button if input is empty
+    });
+
+    // Set up the button click event listener
+    button.addEventListener('click', () => {
+        const inputValue = input.value.trim(); // Get the trimmed input value
+        if (inputValue) { // Check if the input value is not empty
+            additem(inputValue); // Call additem with the input value
+            console.log('Item added:', inputValue);
+            input.value = ''; // Clear the input field after adding the item
+            button.disabled = true; // Disable the button again
+        }
+    });
+
+    // Function to add item to localStorage
+    function additem(inputValue) {
+        // Retrieve the current list from localStorage
+        let mylist = JSON.parse(localStorage.getItem('mylist')) || [];
+        
+        // Add the new item to the list
+        mylist.push(inputValue);
+        
+        // Save the updated list back to localStorage
+        localStorage.setItem('mylist', JSON.stringify(mylist));
+        
+        // Create a new list item and append it to the DOM
+        const li = document.createElement('li');
+        li.textContent = inputValue; // Set the text content of the li
+        document.querySelector('#list').append(li);
+    }
+});
+
+</script>
+
+</html>
